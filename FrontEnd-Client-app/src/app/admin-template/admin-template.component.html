@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sideDrawerMenu.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="flex: auto"></span>
+  <button mat-button routerLink="/admin/home"> Home</button>
+  <button mat-button [matMenuTriggerFor]="manageMenu">
+    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+    Manage
+  </button>
+  <mat-menu #manageMenu>
+    <button mat-button routerLink="/admin/clients"> Clients</button>
+    <br>
+    <button (click)="addClient()" mat-button routerLink="/admin/addClient"> Add Client</button>
+  </mat-menu>
+  <button mat-button *ngIf="authService.isauthenticated">
+    {{ authService.username }}
+  </button>
+  <button (click)="logout()" mat-button mat-raised-button color="accent">
+    Logout
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer #sideDrawerMenu opened="true" mode="side" position="start">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/dashboard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/clients">
+          <mat-icon>dashboard</mat-icon>
+          Clients
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/addClient">
+          <mat-icon>dashboard</mat-icon>
+          Add Client
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height:800px">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+
+
+</mat-drawer-container>

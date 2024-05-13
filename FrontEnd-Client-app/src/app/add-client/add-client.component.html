@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-card [formGroup]="clientFormGroupe"  >
+    <mat-card-header>
+      <mat-card-title>
+        Add Client
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="adresse">
+      </mat-form-field>
+      <mat-card-actions align="end">
+        <button (click)="addClient()" mat-raised-button color="primary">Ajouter Client</button>
+      </mat-card-actions>
+
+
+    </mat-card-content>
+  </mat-card>
+</div>
